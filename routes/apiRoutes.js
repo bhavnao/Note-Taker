@@ -7,7 +7,7 @@ const {
 } = require("../helpers/fsUtils");
 
 //Get route to retrieve data
-router.get("/", (req, res) => {
+router.get("/notes", (req, res) => {
 
     console.log("\nExecuting GET notes request");
 
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
 
 //  POST route to add new note
-router.post("/", (req, res) => {
+router.post("/notes", (req, res) => {
 
     const { title, text } = req.body;
 
@@ -44,7 +44,7 @@ router.post("/", (req, res) => {
 
 
 // API DELETE route 
-router.delete("/:id", (req, res) => {
+router.delete("/notes/:id", (req, res) => {
     readFromFile("./db/db.json")
         .then((data) => {
             const requestedId = req.params.id.toLowerCase();
