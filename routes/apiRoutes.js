@@ -47,13 +47,13 @@ router.post("/notes", (req, res) => {
 router.delete("/notes/:id", (req, res) => {
     readFromFile("./db/db.json")
         .then((data) => {
-            const requestedId = req.params.id.toLowerCase();
+            const requestedId = req.params.id;
             let match = false;
             let noteData = JSON.parse(data);
 
             // This gets rid of the matching note id
             for (let i = 0; i < noteData.length; i++) {
-                if (requestedId === noteData[i].id.toLowerCase()) {
+                if (requestedId === noteData[i].id) {
                     match = true;
                     noteData.splice(i, 1);
                 }
